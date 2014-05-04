@@ -1,0 +1,172 @@
+.app-page.search-page .app-input {
+  border-bottom: none;
+  -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.13);
+  box-shadow: 0 1px 1px rgba(0,0,0,0.13);
+}
+.app-ios-7 .app-page.search-page .app-input {
+  box-shadow: none;
+}
+
+.app-page.search-page .results {
+  padding: 8px 8px 0;
+}
+
+.app-page.search-page .placeholder {
+    display: none;
+    margin: 0;
+    width: 100%;
+    height: 100px;
+    color: #999;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 0px;
+    margin-top: -55px;
+}
+.app-ios-5 .app-page.search-page .placeholder {
+    position: static;
+    margin-top: 50px;
+}
+.app-page.search-page .placeholder.active {
+    display: block;
+}
+.app-page.search-page .placeholder span {
+    display: block;
+    margin: 0 auto 16px;
+    height: 65px;
+    width: 65px;
+    -webkit-background-size: 100%;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.app-page.search-page .placeholder.search span {
+    background-image: url(/img/placeholder-search.png?inline=1);
+}
+.app-page.search-page .placeholder.error span {
+    background-image: url(/img/placeholder-error.png?inline=1);
+}
+.app-page.search-page .placeholder.favs span {
+    background-image: url(/img/placeholder-favs.png?inline=1);
+}
+
+@media screen and (max-height: 300px) {
+    .app-page.search-page .placeholder.active {
+        display: none;
+    }
+}
+
+.app-page.search-page .loader {
+  display: none;
+  margin: 0 auto;
+  padding-top: 8px;
+  height: 16px;
+  width: 16px;
+  background: url(/img/loader.gif?inline=1) no-repeat center 8px;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+}
+.app-page.search-page .loader.active {
+  display: block;
+}
+
+.app-page.search-page .result {
+  position: relative;
+  margin-bottom: 8px;
+  background: #CCC;
+  -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.1);
+  box-shadow: 0 1px 0 rgba(0,0,0,0.1);
+}
+.app-ios-7 .app-page.search-page .result {
+  box-shadow: none;
+}
+.app-page.search-page .result img {
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+}
+.app-page.search-page .result img.animated {
+  -webkit-transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
+}
+.app-page.search-page .result img.visible {
+  opacity: 1;
+}
+.app-page.search-page .result img.active {
+  opacity: 0.65;
+}
+
+.app-page.search-page .image-list {
+  display: none;
+}
+.app-page.search-page .image-list.active {
+  display: block;
+}
+.app-page.search-page .image-list .result {
+  float: left;
+}
+
+.search-page .ad-container {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 46px;
+  width: 100%;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+.app-ios-5 .search-page .ad-container {
+  position: fixed;
+}
+
+.search-page .ad {
+  display: none;
+  opacity: 0;
+  padding: 8px;
+  margin-left: 8px;
+  margin-right: 8px;
+  background-color: #C6C9D0;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+
+.search-page .ad.enabled {
+  display: block;
+}
+.search-page .ad.visible {
+  opacity: 1;
+}
+.search-page .ad.fade {
+  -webkit-transition: opacity 0.5s ease-in;
+  transition: opacity 0.5s ease-in;
+}
+.search-page .ad.active {
+  background-color: #B6B9C0;
+}
+
+.search-page .ad .icon {
+  float: left;
+  margin-right: 8px;
+  position: relative;
+  width: 30px;
+  height: 30px;
+  overflow: hidden;
+  background-color: #AAA;
+  -webkit-background-size: cover;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+}
+.app-ios .search-page .ad .icon {
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+}
+.search-page .ad .text {
+  display: table-cell;
+  height: 30px;
+  color: #626468;
+  font-size: 13px;
+  line-height: 14px;
+  vertical-align: middle;
+  overflow: hidden;
+}

@@ -1,0 +1,7 @@
+.app-page .app-topbar .app-title .app-icon {
+  background-image: url(/img/search-icon.png?inline=1);
+}
+
+.app-page.favs .app-topbar .app-title .app-icon {
+  background-image: url(/img/heartwhite.png?inline=1);
+}

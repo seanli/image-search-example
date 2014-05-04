@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html manifest="manifest.appcache">
+  <head>
+    <title>Image Search</title>
+    <link rel="kik-icon" href="/img/icon.png">
+    <meta name="kik-hide-form-helpers" content="true">
+    <meta name="kik-transparent-statusbar" content="true">
+    <meta name="description" content="Find and share images with your friends on Kik.">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="/lib/app.min.css?inline=1">
+    <link rel="stylesheet" href="/css/image-search.css?inline=1">
+    <link rel="stylesheet" href="/css/page-search.css?inline=1">
+    <link rel="stylesheet" href="/css/page-viewer.css?inline=1">
+  </head>
+
+  <body>
+    <div class="app-page search-page" data-page="search">
+      <div class="app-topbar blue">
+        <div class="app-title"><span class="app-icon"></span>Image Search</div>
+        <div class="right app-button heart" data-target="favs"><span></span></div>
+      </div>
+      <div class="app-content">
+        <form action="">
+          <input class="app-input no-icon-android" type="search" placeholder="Search...">
+          <input type="submit" style="display:none">
+        </form>
+        <div class="results">
+          <div class="placeholder"></div>
+          <div class="loader"></div>
+          <div class="image-list"></div>
+          <div class="clear"></div>
+          <div class="result"><img src=""></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="app-page search-page favs" data-page="favs">
+      <div class="app-topbar blue">
+        <div class="left app-button" data-back="true">Back</div>
+        <div class="app-title"><span class="app-icon"></span>Favorites</div>
+      </div>
+      <div class="app-content">
+        <div class="results">
+          <div class="placeholder"></div>
+          <div class="loader"></div>
+          <div class="image-list"></div>
+          <div class="clear"></div>
+          <div class="result"><img src=""></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="app-page viewer-page dark-page" data-page="viewer">
+      <div class="app-topbar">
+        <div class="left app-button" data-back="true">Back</div>
+        <div class="app-title"><span class="app-icon"></span>Images</div>
+        <div class="right app-button heart"><span></span></div>
+        <div class="right app-button kik"><span></span></div>
+      </div>
+      <div class="app-content"></div>
+    </div>
+
+    <script src="/lib/kik.js?inline=1"></script>
+    <script src="/lib/app.min.js?inline=1"></script>
+    <script src="/lib/photo-viewer.js?inline=1"></script>
+    <script src="/js/backend.js?inline=1"></script>
+    <script src="/js/saved.js?inline=1"></script>
+    <script src="/js/page-search.js?inline=1"></script>
+    <script src="/js/page-favs.js?inline=1"></script>
+    <script src="/js/page-viewer.js?inline=1"></script>
+    <script src="/js/main.js?inline=1"></script>
+  </body>
+</html>

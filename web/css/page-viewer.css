@@ -1,0 +1,53 @@
+.viewer-page .app-topbar .app-button.kik span {
+  display: block;
+  margin-top: 13px;
+  height: 18px;
+  width: 37px;
+  background-image: url(/img/kik-button-small.png?inline=1);
+  -webkit-background-size: 100%;
+  background-size: 100%;
+}
+.app-android .viewer-page .app-topbar .app-button.kik span {
+  margin-top: 12px;
+  height: 24px;
+  width: 49px;
+  background-image: url(/img/kik-button.png?inline=1);
+}
+.app-topbar .app-button.heart span {
+  display: block;
+  margin-top: 14px;
+  height: 16px;
+  width: 16px;
+  background-image: url(/img/heartwhite.png?inline=1);
+  -webkit-background-size: 100%;
+  background-size: 100%;
+}
+.app-android .app-topbar .app-button.heart span {
+  height: 24px;
+  width: 24px;
+  margin-top: 12px;
+}
+.app-topbar .app-button.heart.fav span {
+  background-image: url(/img/heartred.png?inline=1);
+  margin-top: 14px;
+  height: 16px;
+  width: 16px;
+}
+.app-android .app-topbar .app-button.heart.fav span {
+  margin-top: 10px;
+  height: 24px;
+  width: 24px;
+}
+.app-android .app-topbar .app-button.heart.fav span {
+  margin-top: 12px;
+}
+.viewer-page .app-topbar .app-button.heart {
+  margin-right: 57px;
+}
+.app-android .viewer-page .app-topbar .app-button.heart {
+  margin-right: 69px;
+}
+
+.viewer-page .app-content {
+  overflow: hidden;
+}
