@@ -2,61 +2,70 @@
  * This file defines API calls to server to fetch images from the search query.
  */
 
-var API = function () {
+var SearchAPI = function () {
+  var API_URL = 'http://ajax.googleapis.com/ajax/services/search/images?v=1.0&start=0&rsz=8&q=';
 
-  var API_URL = 'https://image-search-backend.appspot.com',
-      TIMEOUT = 25 * 1000;
+  return search;
 
-  return function (resource, data, callback) {
-
-    var url  = API_URL+resource,
-        done = false,
-        xhr  = new XMLHttpRequest();
-
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState === 4) {
-        xhrComplete(xhr.status);
+  function search(query, callback) {
+    var url = API_URL+encodeURIComponent(query);
+    jsonp(url, function (data) {
+      if ( !data ) {
+        callback();
+        return;
       }
-    };
-
-    xhr.onload = function () {
-      xhrComplete(xhr.status);
-    };
-
-    xhr.onerror = function () {
-      xhrComplete(xhr.status);
-    };
-
-    xhr.timeout = TIMEOUT;
-    xhr.ontimeout = function () {
-      xhrComplete(0);
-    };
-
-    setTimeout(function () {
-      if ( !done ) {
-        xhr.abort();
-        xhrComplete(0);
+      if (data.responseStatus !== 200) {
+        callback();
+        return;
       }
-    }, TIMEOUT);
 
-    xhr.open('POST', url, true);
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
-    xhr.send( JSON.stringify(data || {}) );
+      var images = [];
+      try {
+        data.responseData.results.forEach(function (result) {
+          images.push({
+            height : result.height,
+            width  : result.width,
+            url    : result.url
+          });
+        });
+      } catch (err) {
+        callback();
+        return;
+      }
+      callback(images);
+    });
+  }
 
-    function xhrComplete (status) {
-      if (done) return;
-      done = true;
-      var response;
-      if (status === 200) {
-        try {
-          response = JSON.parse(xhr.responseText);
-        } catch (err) {}
+  function jsonp(url, callback) {
+    var callbackName = ('x'+Math.random()).replace(/[\-\.]/g,'');
+    if (url.indexOf('?') === -1) {
+      url += '?';
+    } else {
+      url += '&';
+    }
+    url += 'callback='+callbackName;
+
+    window[callbackName] = finish;
+    var timeout = setTimeout(function () {
+      finish();
+    }, 25*1000);
+
+    var script = document.createElement('script');
+    script.async = true;
+    script.defer = true;
+    script.src = url;
+    document.documentElement.appendChild(script);
+
+    function finish(data) {
+      clearTimeout(timeout);
+      delete window[callbackName];
+      if (script.parentNode) {
+        script.parentNode.removeChild(script);
       }
       if (callback) {
-        callback(status||0, response, xhr.responseText);
+        callback(data);
+        callback = null;
       }
-    };
-
-  };
-
+    }
+  }
 }();

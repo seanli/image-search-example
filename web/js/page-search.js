@@ -92,8 +92,8 @@ App.controller('search', function (page) {
     kik.ready(function () {
       var queryTime = new Date().getTime();
       // Call the image search API in backend.js
-      API('/search/', { q: query }, function (status, images) {
-        if (status === 0) {
+      SearchAPI(query, function (images) {
+        if ( !images ) {
           // Show error page if the API call errored or timed-out
           if ((currentQuery === query) && (currentTime === time)) {
             showResults(page, currentTime, resultTmpl, null, query);
